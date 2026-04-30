@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", sans-serif;
+  --font-accent: "Sora", sans-serif;
+  
+  --color-nova-teal: #00f5ff;
+  --color-nova-blue: #0066ff;
+  --color-nova-dark: #050505;
+  --color-nova-card: rgba(15, 15, 15, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-nova-dark text-white font-sans selection:bg-nova-teal selection:text-black antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-[-0.03em] leading-[1.1] font-extrabold;
+  }
+
+  h1 { @apply font-black; }
+
+  button {
+    @apply font-semibold tracking-[0.3px];
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-nova-card backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-shimmer {
+    background: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 75%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 10s infinite linear;
+  }
+  
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .neon-text-teal {
+    text-shadow: 0 0 8px rgba(0, 245, 255, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% -200%; }
+  100% { background-position: 200% 200%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
