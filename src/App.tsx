@@ -26,6 +26,7 @@ interface Category {
 const CPA_LINK = "https://appchecker.space/cl/i/82v326";
 const GUMROAD_LINK = "https://novaassetshop.gumroad.com/l/fmnwjo";
 const VAULT_IMAGE = "https://res.cloudinary.com/dmafb7518/image/upload/q_auto/f_auto/v1777561254/Untitled_600_x_600_px__20260430_172426_0000_lahou0.png";
+const NEW_PREMIUM_IMAGE = "https://res.cloudinary.com/globalglaz-com/image/upload/v1777566106/file_000000000e7072079fcbf9749b8e6c87_eah14u.png";
 
 export default function App() {
   const [timeLeft, setTimeLeft] = useState({ minutes: 29, seconds: 59 });
@@ -157,6 +158,46 @@ export default function App() {
             </p>
           </motion.div>
         </div>
+
+        {/* Premium Floating Hero Asset */}
+        <motion.div
+          initial={{ opacity: 0, y: -20, x: 20 }}
+          animate={{ opacity: 1, y: 0, x: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="absolute -top-10 -right-12 md:top-24 md:-right-20 lg:-right-32 z-20 w-40 md:w-72 lg:w-96 group"
+        >
+          <div className="relative p-2 md:p-4">
+            {/* Soft Neon Glow */}
+            <div className="absolute inset-0 bg-nova-teal/20 blur-[40px] rounded-[32px] group-hover:bg-nova-teal/40 transition-all duration-700"></div>
+            
+            <div className="glass p-1.5 md:p-3 rounded-[24px] border-white/10 shadow-2xl overflow-hidden hover:scale-105 transition-all duration-700 animate-float cursor-pointer">
+              <div className="relative">
+                <img 
+                  src={NEW_PREMIUM_IMAGE} 
+                  alt="Done For You Products" 
+                  className="rounded-2xl w-full h-auto object-cover"
+                />
+                
+                {/* Requested Gradient: Top side → BLACK (strong) Bottom side → LIGHT (transparent fade) */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 70%, transparent 100%)' }}
+                ></div>
+
+                {/* Text Overlay */}
+                <div className="absolute top-4 left-4 right-4">
+                  <p className="font-display font-black text-xs md:text-lg text-white leading-tight text-glow uppercase tracking-tighter">
+                    1M+ Done-For-You <br /> 
+                    <span className="text-nova-teal neon-text-teal text-[10px] md:text-sm">Digital Products</span>
+                  </p>
+                </div>
+
+                {/* Subtle Reflection */}
+                <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Vault Product Showcase */}
         <motion.div 
@@ -363,7 +404,46 @@ export default function App() {
         <h2 className="font-display text-5xl md:text-7xl font-black italic tracking-tighter leading-none">Your Future is Inside</h2>
         <p className="text-xl text-white/50 font-light">Join the 10,000+ creators building their digital empires with Nova Assets.</p>
         
-        <div className="pt-8">
+        <div className="pt-8 flex flex-col items-center">
+          {/* Pre-CTA Value Visual */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-12 relative group max-w-md w-full px-4 md:px-0"
+          >
+            {/* Soft Ambient Glow */}
+            <div className="absolute inset-x-0 -inset-y-4 bg-nova-teal/10 blur-[60px] rounded-full group-hover:bg-nova-teal/20 transition-all duration-700"></div>
+            
+            <div className="glass p-2 md:p-3 rounded-[24px] border-white/10 shadow-2xl relative overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(0,245,255,0.2)]">
+              <div className="relative">
+                <img 
+                  src={NEW_PREMIUM_IMAGE} 
+                  alt="Nova Assets Collection" 
+                  className="w-full h-auto rounded-[18px] opacity-90 group-hover:opacity-100 transition-opacity"
+                />
+                
+                {/* Visual Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                
+                {/* Text Overlay */}
+                <div className="absolute bottom-4 left-0 w-full text-center px-4">
+                  <p className="font-display font-black text-sm md:text-lg text-white text-glow uppercase tracking-tighter">
+                    1M+ Done-For-You <br className="md:hidden" /> 
+                    <span className="text-nova-teal neon-text-teal">Digital Products</span>
+                  </p>
+                </div>
+
+                {/* Subtle Shimmer */}
+                <div className="absolute inset-0 glass-shimmer opacity-20 pointer-events-none"></div>
+              </div>
+            </div>
+
+            {/* Subtle Reflection */}
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4/5 h-4 bg-nova-blue/10 blur-xl rounded-full opacity-50"></div>
+          </motion.div>
+
           <button 
             onClick={handleCTAClick}
             className="group relative px-12 py-6 bg-white text-black font-display font-black text-2xl rounded-2xl hover:bg-nova-teal transition-all shadow-[0_0_50px_rgba(0,245,255,0.2)] flex items-center justify-center gap-4 mx-auto overflow-hidden"
