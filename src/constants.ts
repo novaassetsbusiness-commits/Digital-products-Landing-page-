@@ -108,3 +108,17 @@ export const TESTIMONIALS = [
   { name: "Elena S.", text: "Unlocked the 'Free Access' in time. This is literally gold mine for creators.", role: "Graphic Designer" },
   { name: "David K.", text: "The weekly updates keep me ahead of the curve. Scaling my SaaS now.", role: "Indie Hacker" }
 ];
+
+export const PRODUCT_IMAGES = [
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392196/file_0000000062a871fa9af5912649424848_tiq0gi.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392197/file_00000000082871fab3d15c0712a5a5fe_bgmihy.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392200/file_00000000d77c71faa4e3cfad52ef1c39_rejx4m.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392200/file_00000000a1e871fa879dce32ebc70f76_tdrnho.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392201/file_00000000f43071fabad287bc3b0322dd_rhnjay.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392202/file_00000000cc9471faa63bf43bb7e6c5eb_ck9tzh.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392212/file_00000000749c71faa585452dfb1f4fab_p8ccf5.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392212/file_0000000033d871fab111515f40c0d08d_ju9bzt.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392214/file_00000000cd5471fa97a07fda6e989d0b_aitcxr.png",
+  "https://res.cloudinary.com/globalglaz-com/image/upload/v1776392214/file_000000006f8071fa95e487cef423a15a_fz2flg.png"
+];
+

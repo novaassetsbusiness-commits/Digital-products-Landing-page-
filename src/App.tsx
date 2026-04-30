@@ -14,7 +14,7 @@ import {
   CheckCircle2,
   Bell
 } from 'lucide-react';
-import { CATEGORIES, TESTIMONIALS } from './constants';
+import { CATEGORIES, TESTIMONIALS, PRODUCT_IMAGES } from './constants';
 
 // --- Types ---
 interface Category {
@@ -91,12 +91,23 @@ export default function App() {
 
       {/* Navigation (Transparent) */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-nova-dark/20 backdrop-blur-md px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-nova-teal to-nova-blue rounded-lg flex items-center justify-center shadow-lg shadow-nova-teal/20">
+        <motion.div 
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-2 group cursor-pointer"
+        >
+          <div className="w-8 h-8 bg-gradient-to-br from-nova-teal to-nova-blue rounded-lg flex items-center justify-center shadow-lg shadow-nova-teal/20 group-hover:shadow-nova-teal/40 transition-all duration-500">
             <Lock className="w-4 h-4 text-black" />
           </div>
-          <span className="font-display font-bold text-xl tracking-tight uppercase italic">Nova Assets</span>
-        </div>
+          <div className="relative">
+            <h1 className="font-display font-extrabold text-xl tracking-[-0.03em] uppercase flex items-center gap-1.5">
+              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">Nova</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-nova-teal to-nova-blue neon-text-teal group-hover:brightness-125 transition-all duration-500">Assets</span>
+            </h1>
+            {/* Tiny glow accent line */}
+            <div className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-nova-teal/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+          </div>
+        </motion.div>
         <button 
           onClick={handleCTAClick}
           className="hidden md:flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition-all border-white/20"
@@ -236,7 +247,30 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* Urgency + Countdown Banner */}
+      {/* Main Product Carousel */}
+      <section className="py-12 relative overflow-hidden z-10 bg-black/20 border-y border-white/5">
+        <div className="absolute inset-0 glass-shimmer opacity-5 pointer-events-none"></div>
+        <div className="flex overflow-hidden group">
+          <motion.div 
+            animate={{ x: [0, -1920] }}
+            transition={{ 
+              duration: 40, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+            className="flex gap-6 py-4 px-3 shrink-0"
+          >
+            {[...PRODUCT_IMAGES, ...PRODUCT_IMAGES].map((img, i) => (
+              <div 
+                key={i} 
+                className="w-48 h-64 md:w-64 md:h-80 glass rounded-2xl overflow-hidden flex-shrink-0 border-white/5 hover:scale-105 hover:border-nova-teal/40 hover:shadow-[0_0_30px_rgba(0,245,255,0.1)] transition-all duration-500 cursor-pointer"
+              >
+                <img src={img} alt="Digital Product" className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
       <section className="bg-red-500/10 border-y border-red-500/20 py-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden">
           <div className="flex items-center gap-4">
@@ -300,6 +334,25 @@ export default function App() {
               <ValueItem text="Beginner to Pro Content" />
               <ValueItem text="Resell Rights Included on Multi-Assets" />
             </div>
+
+            {/* Lifetime Access Highlight Box */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-8 glass p-6 rounded-2xl border-nova-teal/30 bg-nova-teal/5 relative group overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-nova-teal/5 blur-2xl animate-pulse pointer-events-none"></div>
+              <p className="relative font-display font-black text-xl mb-2 italic">
+                <span className="text-white">One-Time Access.</span>{" "}
+                <span className="text-nova-teal neon-text-teal">Lifetime Updates Included.</span>
+              </p>
+              <p className="relative text-white/50 text-sm italic font-light leading-relaxed">
+                Get instant access to all current products + every new product added in the future — no extra cost.
+              </p>
+            </motion.div>
+
             <button 
               onClick={handleCTAClick}
               className="w-full md:w-auto px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-nova-teal transition-all flex items-center justify-center gap-2"
@@ -326,7 +379,21 @@ export default function App() {
 
       {/* Vault Experience Section */}
       <section className="py-32 px-6 overflow-hidden relative">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+        {/* Background Depth Effect */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <img 
+            src={PRODUCT_IMAGES[2]} 
+            className="absolute top-0 left-[-10%] w-[40%] opacity-[0.12] blur-[40px] rotate-12"
+            alt=""
+          />
+          <img 
+            src={PRODUCT_IMAGES[4]} 
+            className="absolute bottom-0 right-[-10%] w-[40%] opacity-[0.12] blur-[40px] -rotate-12"
+            alt=""
+          />
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
           <div className="relative">
             <div className="absolute inset-0 bg-nova-teal/20 blur-[100px] rounded-full"></div>
             <motion.div 
@@ -419,7 +486,7 @@ export default function App() {
             <div className="glass p-2 md:p-3 rounded-[24px] border-white/10 shadow-2xl relative overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(0,245,255,0.2)]">
               <div className="relative">
                 <img 
-                  src={NEW_PREMIUM_IMAGE} 
+                  src="https://res.cloudinary.com/globalglaz-com/image/upload/v1777566106/file_000000000e7072079fcbf9749b8e6c87_eah14u.png" 
                   alt="Nova Assets Collection" 
                   className="w-full h-auto rounded-[18px] opacity-90 group-hover:opacity-100 transition-opacity"
                 />
@@ -442,6 +509,20 @@ export default function App() {
 
             {/* Subtle Reflection */}
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4/5 h-4 bg-nova-blue/10 blur-xl rounded-full opacity-50"></div>
+          </motion.div>
+
+          {/* Lifetime Access Message Above CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8 flex items-center gap-2 px-5 py-2 glass rounded-full border-nova-blue/30 bg-nova-blue/5 shadow-[0_0_15px_rgba(0,102,255,0.1)]"
+          >
+            <div className="w-2 h-2 bg-nova-blue rounded-full animate-pulse shadow-[0_0_8px_rgba(0,102,255,1)]"></div>
+            <p className="text-xs md:text-sm font-bold tracking-wide italic">
+              <span className="text-white/80">One-Time Access.</span>{" "}
+              <span className="text-nova-blue underline decoration-nova-blue/30 underline-offset-4">Lifetime Updates Included.</span>
+            </p>
           </motion.div>
 
           <button 
